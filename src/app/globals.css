@@ -24,3 +24,24 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* --- GAYA SUBTITLE NETFLIX STYLE --- */
+
+/* Ini perintah khusus buat browser (Webkit/Chrome) */
+video::cue {
+  /* Warna Teks: Putih atau Kuning biar jelas */
+  color: #fbbf24; /* Kuning Emas */
+  
+  /* Background teks: Hitam transparan biar gak kotak banget */
+  background-color: rgba(0, 0, 0, 0.6);
+  
+  /* Ukuran huruf (bisa dibesarkan kalau kekecilan) */
+  font-size: 1rem; /* Coba ganti 1.2rem kalau kurang besar */
+  
+  /* Jenis Font */
+  font-family: sans-serif;
+  font-weight: bold;
+  
+  /* Sedikit trik biar gak terlalu nempel bawah (bisa beda efek tiap HP) */
+  line-height: 1.5;
+}

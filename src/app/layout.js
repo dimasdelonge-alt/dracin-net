@@ -12,11 +12,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Nuno Drama - Nonton Gratis Netshort",
+  title: "Nuno Drama - Nonton Gratis",
   description: "Streaming drama china subtitle indonesia.",
   icons: {
-    icon: '/logo.png', // <--- Ini kuncinya. Garis miring '/' artinya folder public.
+    icon: '/logo.png',
   },
+  // INI BARIS BARUNYA:
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({ children }) {

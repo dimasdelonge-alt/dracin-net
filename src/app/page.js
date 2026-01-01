@@ -19,30 +19,36 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white p-6 pb-20">
-      {/* HEADER */}
-      <header className="flex justify-between items-center mb-8 sticky top-0 z-50 bg-black/80 backdrop-blur-sm py-4">
+      {/* HEADER: Hapus 'sticky' biar ikut ke-scroll */}
+      <header className="flex justify-between items-center mb-6 py-4">
         
-        {/* BAGIAN LOGO & JUDUL */}
-        <div className="flex items-center gap-3">
-          {/* Ini gambarnya */}
-          <img
-		   src="/logo.png"
-		   alt="logo"
-		   style={{ width: '100px', height: 'auto' }}
-		  />
+        {/* BAGIAN KIRI: Logo */}
+        <div className="flex items-center gap-2">
+          {/* Logo kita batasi ukurannya */}
+          <img 
+            src="/logo.png" 
+            alt="Logo" 
+            className="w-10 h-10 md:w-12 md:h-12 object-cover rounded-full border-2 border-red-600" 
+          />
           
-          {/* Ini tulisannya */}
-          <h1 className="text-2xl md:text-3xl font-bold text-red-600">
-            Nuno Drama Netshort
+          {/* Teks Judul: Di HP kita HIDDEN (sembunyikan), cuma muncul di Laptop (md:block) */}
+          <h1 className="hidden md:block text-2xl font-bold text-red-600 tracking-tighter">
+            Nuno Drama <span className="text-white">Netshort</span>
           </h1>
         </div>
         
-        {/* BAGIAN TOMBOL KANAN (Search & VIP) */}
-        <div className="flex gap-3 items-center">
-          <Link href="/search" className="text-gray-300 hover:text-white text-sm font-semibold border border-gray-700 px-3 py-1.5 rounded-full transition">
-            🔍 Cari
+        {/* BAGIAN KANAN: Tombol */}
+        <div className="flex gap-2 items-center">
+          {/* Tombol Search: Di HP cuma Ikon, Di Laptop ada tulisan 'Cari' */}
+          <Link 
+            href="/search" 
+            className="flex items-center justify-center bg-gray-800 text-white border border-gray-700 rounded-full w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 hover:bg-gray-700 transition"
+          >
+            <span className="text-lg">🔍</span>
+            <span className="hidden md:inline-block ml-2 text-sm font-semibold">Cari</span>
           </Link>
-          <button className="bg-red-600 px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-red-900/40">
+          
+          <button className="bg-red-600 text-white px-4 py-2 rounded-full text-xs md:text-sm font-bold shadow-lg shadow-red-900/40">
             VIP
           </button>
         </div>

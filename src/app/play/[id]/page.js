@@ -54,13 +54,29 @@ export default function PlayPage() {
         <div className="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800">
           {activeEp ? (
             <video 
-              key={activeEp.playVoucher} // Supaya player refresh pas ganti episode
+              key={activeEp.playVoucher} 
               controls 
               autoPlay 
               poster={activeEp.episodeCover}
               className="w-full h-full"
+              crossOrigin="anonymous" // Penting buat load subtitle beda domain
             >
               <source src={activeEp.playVoucher} type="video/mp4" />
+              
+              {/* JURUS SUBTITLE: Kita cek apakah ada list subtitle */}
+              {activeEp.subtitleList?.map((sub, index) => (
+                <track
+                  key={index}
+                  kind="subtitles"
+                  // Kita tebak nama fieldnya 'url' atau 'subtitleUrl'. 
+                  // Kalau nanti masih gagal, kita harus intip JSON lagi.
+                  src={sub.url || sub.subtitleUrl} 
+                  srcLang={sub.language || "id"}
+                  label={sub.language || "Indonesia"}
+                  default={index === 0} // Subtitle pertama otomatis nyala
+                />
+              ))}
+
               Browser kamu tidak dukung video ini.
             </video>
           ) : (

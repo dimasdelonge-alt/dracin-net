@@ -21,18 +21,32 @@ export default async function Home() {
     <div className="min-h-screen bg-black text-white p-6 pb-20">
       {/* HEADER */}
       <header className="flex justify-between items-center mb-8 sticky top-0 z-50 bg-black/80 backdrop-blur-sm py-4">
-        <h1 className="text-2xl md:text-3xl font-bold text-red-600">DRACIN STREAM 🐉</h1>
         
+        {/* BAGIAN LOGO & JUDUL */}
+        <div className="flex items-center gap-3">
+          {/* Ini gambarnya */}
+          <img
+		   src="/logo.png"
+		   alt="logo"
+		   style={{ width: '100px', height: 'auto' }}
+		  />
+          
+          {/* Ini tulisannya */}
+          <h1 className="text-2xl md:text-3xl font-bold text-red-600">
+            Nuno Drama Netshort
+          </h1>
+        </div>
+        
+        {/* BAGIAN TOMBOL KANAN (Search & VIP) */}
         <div className="flex gap-3 items-center">
-          {/* Tombol Search Baru */}
           <Link href="/search" className="text-gray-300 hover:text-white text-sm font-semibold border border-gray-700 px-3 py-1.5 rounded-full transition">
             🔍 Cari
           </Link>
-          
           <button className="bg-red-600 px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-red-900/40">
             VIP
           </button>
         </div>
+
       </header>
 
       {/* LOOPING KATEGORI */}

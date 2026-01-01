@@ -19,11 +19,12 @@ export default function SearchPage() {
     setResults([]); 
 
     try {
-      // PERBAIKAN DISINI: Pakai parameter 'query' sesuai screenshot API
       const res = await fetch(`https://api.sansekai.my.id/api/netshort/search?query=${query}`);
       const json = await res.json();
       
-      const listFilm = json.data || json; 
+      // --- PERBAIKAN DISINI ---
+      // Kita ambil dari 'searchCodeSearchResult' sesuai data JSON kamu
+      const listFilm = json.searchCodeSearchResult || []; 
       
       if (Array.isArray(listFilm)) {
         setResults(listFilm);
@@ -47,6 +48,7 @@ export default function SearchPage() {
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold text-red-500 mb-6 text-center">Cari Drama 🔍</h1>
 
+        {/* INPUT */}
         <form onSubmit={handleSearch} className="flex gap-2 mb-10">
           <input 
             type="text" 
@@ -64,8 +66,10 @@ export default function SearchPage() {
           </button>
         </form>
 
-        {loading && <div className="text-center text-gray-500 animate-pulse">Sedang mencari di server...</div>}
+        {/* LOADING */}
+        {loading && <div className="text-center text-gray-500 animate-pulse">Sedang mencari...</div>}
 
+        {/* HASIL */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {results.map((film) => (
             <Link 
@@ -81,14 +85,17 @@ export default function SearchPage() {
                 />
               </div>
               <div className="p-3">
-                <h3 className="text-sm font-semibold text-gray-200 line-clamp-2">
-                  {film.shortPlayName}
-                </h3>
+                {/* Pakai 'dangerouslySetInnerHTML' karena di judul ada tag <em> (huruf miring) */}
+                <h3 
+                  className="text-sm font-semibold text-gray-200 line-clamp-2"
+                  dangerouslySetInnerHTML={{ __html: film.shortPlayName }}
+                />
               </div>
             </Link>
           ))}
         </div>
         
+        {/* PESAN JIKA KOSONG */}
         {hasSearched && !loading && results.length === 0 && (
           <div className="text-center py-10 bg-gray-900 rounded-xl border border-gray-800">
             <p className="text-xl text-gray-400">Drama tidak ditemukan 🥺</p>

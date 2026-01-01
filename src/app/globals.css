@@ -25,23 +25,30 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* --- GAYA SUBTITLE NETFLIX STYLE (UPDATE POSISI) --- */
+/* --- GAYA SUBTITLE FINAL (RESPONSIF FULL SCREEN) --- */
 
-/* 1. Gaya Teks (Warna & Bentuk) */
 video::cue {
-  color: #fbbf24; /* Kuning Emas */
-  background-color: rgba(0, 0, 0, 0.6); /* Hitam Transparan */
-  font-size: 1rem;
+  /* 1. WARNA & BACKGROUND */
+  color: #fbbf24;
+  background-color: rgba(0, 0, 0, 0.6);
+  
+  /* 2. UKURAN HURUF (KUNCINYA DISINI) */
+  /* Jangan pakai 'px' atau 'rem'. Pakai 'vmin' (viewport minimum). */
+  /* 4.5vmin artinya ukurannya 4.5% dari dimensi layar. */
+  font-size: 4.5vmin; 
+  
+  /* 3. SETTING FONT */
   font-family: sans-serif;
   font-weight: bold;
-  
-  /* PENTING: Paksa teks rata tengah secara Horizontal (Kiri-Kanan) */
-  text-align: center; 
+  line-height: 1.4; /* Jarak antar baris biar gak dempet */
 }
 
-/* 2. JURUS RAHASIA: Mengangkat Posisi (Khusus Chrome/Android) */
-/* Ini akan menggeser seluruh wadah subtitle ke atas */
+/* KHUSUS CHROME/ANDROID - MEMAKSA POSISI NAIK */
 video::-webkit-media-text-track-container {
-  transform: translateY(-50px); /* Angkat 30 pixel ke atas */
-  /* Kalau masih kurang naik, ganti -30px jadi -50px atau -10% */
+  /* Geser container subtitle naik ke atas */
+  /* -10% artinya naik 10% dari posisi asli */
+  transform: translateY(-15%) !important; 
+  
+  /* Pastikan lebar container tetap aman */
+  overflow: visible !important;
 }
